@@ -26,7 +26,7 @@ FROM mak_test.dbo.NashvilleHousing			--identifying nulls in PropertyAddress
 --where PropertyAddress is null
 order by ParcelID
 
-SELECT a.ParcelID, a.PropertyAddress, b.ParcelID, b.PropertyAddress, ISNULL(a.PropertyAddress, b.PropertyAddress) 
+SELECT a.ParcelID, a.PropertyAddress, b.ParcelID, b.PropertyAddress, COALESCE(a.PropertyAddress, b.PropertyAddress) 
 FROM mak_test.dbo.NashvilleHousing a
 JOIN mak_test.dbo.NashvilleHousing b   
 	ON a.ParcelID = b.ParcelID				--comparing nulls in PropertyAddress
